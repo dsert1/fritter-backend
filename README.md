@@ -304,6 +304,42 @@ This renders the `index.html` file that will be used to interact with the backen
 - `400` if username or password is in the wrong format
 - `409` if the username is already in use
 
+#### `POST /api/channels/join` - Join Channel
+
+**Body** _(no need to add fields that are not being changed)_
+
+- `user_id` _{string}_ - The user's user_id
+- `channel_id` _{string}_ - The channel's channel_id
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` if username or password is in the wrong format
+- `409` if the username is already in use
+
+
+#### `POST /api/channels/leave` - Leave Channel
+
+**Body** _(no need to add fields that are not being changed)_
+
+- `user_id` _{string}_ - The user's user_id
+- `channel_id` _{string}_ - The channel's channel_id
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` if username or password is in the wrong format
+- `409` if the username is already in use
+
+
 #### `DELETE /api/users` - Delete user
 
 **Returns**
