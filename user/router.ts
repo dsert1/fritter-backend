@@ -41,6 +41,15 @@ router.post(
   }
 );
 
+router.put(
+  '/addFollower',
+  async (req: Request, res: Response) => {
+    await UserCollection.addOneFollower(req.body.user1, req.body.user2);
+    const user1Object = await UserCollection.findOneByUsername(req.body.user1);
+    res.status(200).json(util.constructUserResponse(user1Object));
+  },
+);
+
 /**
  * Sign out a user
  *

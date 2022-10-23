@@ -21,6 +21,12 @@ function changePassword(fields) {
     .catch(showResponse);
 }
 
+function addFollower(fields) {
+  fetch('/api/users/addFollower', {method: 'PUT', body: JSON.stringify(fields), headers: {'Content-Type': 'application/json'}})
+    .then(showResponse)
+    .catch(showResponse);
+}
+
 function deleteUser(fields) {
   fetch('/api/users', {method: 'DELETE'})
     .then(showResponse)

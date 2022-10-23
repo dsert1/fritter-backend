@@ -27,6 +27,32 @@ class UserCollection {
   }
 
   /**
+   * Get all the users in the database
+   *
+   * @return {Promise<HydratedDocument<User>[]>} - An array of all of the users
+   */
+   static async findAll(): Promise<Array<HydratedDocument<User>>> {
+    return UserModel.find();
+  }
+
+  /**
+   * Makes it so that user 2 follows user 1
+   *
+   * @param {string} user1 - The username of the user1
+   * @param {string} user2 - The username of the user2
+   * @return {Promise<HydratedDocument<User>>} - The newly created user
+   */
+   static async addOneFollower(user1: string, user2: string): Promise<void> {
+    const user1Object = await this.findOneByUsername(user1);
+    const user2Object = await this.findOneByUsername(user2);
+    user1Object.followers.push(user2);
+    user2Object.following.push(user1);
+
+    await user1Object.save();
+    await user2Object.save();
+  }
+
+  /**
    * Find a user by userId.
    *
    * @param {string} userId - The userId of the user to find
@@ -43,6 +69,9 @@ class UserCollection {
    * @return {Promise<HydratedDocument<User>> | Promise<null>} - The user with the given username, if any
    */
   static async findOneByUsername(username: string): Promise<HydratedDocument<User>> {
+    if (!username) {
+      throw Error("The username field is empty.");
+    }
     return UserModel.findOne({username: new RegExp(`^${username.trim()}$`, 'i')});
   }
 
