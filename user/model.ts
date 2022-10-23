@@ -12,7 +12,7 @@ export type User = {
   username: string;
   password: string;
   dateJoined: Date;
-  streak: number;
+  lastPosted: Date;
   followers: string[];
   following: string[];
 };
@@ -36,8 +36,8 @@ const UserSchema = new Schema({
     type: Date,
     required: true
   },
-  streak: {
-    type: 0, 
+  lastPosted: {
+    type: Date, 
     required: false
   }, 
   followers: {

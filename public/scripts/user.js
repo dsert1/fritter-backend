@@ -27,8 +27,8 @@ function addFollower(fields) {
     .catch(showResponse);
 }
 
-function fetchStreak(fields) {
-  fetch(`/api/users/getStreak?user=${fields.user}`) // GET
+function getLastPosted(fields) {
+  fetch(`/api/users/getLastPosted?user=${fields.user}`) // GET
     .then(showResponse)
     .catch(showResponse);
 }

@@ -58,11 +58,15 @@ router.put(
  * Get the streaks of the user
  */
 router.get(
-  '/getStreak',
+  '/getLastPosted',
   async (req: Request, res: Response) => {
     const user = req.query.user;
-    const streak = await UserCollection.getStreak(user);
-    res.status(200).json(streak);
+    const lastPostedDate = await UserCollection.getLastPosted(user);
+    if (!lastPostedDate) {
+      res.status(400).json("User has never posted.");
+      return;
+    }
+    res.status(200).json(lastPostedDate);
   },
 );
 

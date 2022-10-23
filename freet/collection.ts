@@ -29,7 +29,13 @@ class FreetCollection {
       dateModified: date,
       location,
     });
-    await freet.save(); // Saves freet to MongoDB
+
+    // update last posted time to user
+    const user = await UserCollection.findOneByUserId(authorId);
+    user.lastPosted = new Date(date.getTime());
+    
+    await freet.save();
+    await user.save();
     return freet.populate('authorId');
   }
 

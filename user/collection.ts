@@ -22,7 +22,7 @@ class UserCollection {
     const dateJoined = new Date();
 
     const user = new UserModel({username, password, dateJoined});
-    user.streak = 0;
+    user.lastPosted = undefined;
     await user.save(); // Saves user to MongoDB
     return user;
   }
@@ -96,11 +96,9 @@ class UserCollection {
    * @param {string} username - The username of the user to find
    * @return {number} - The streak associated with that user, if exists
    */
-    static async getStreak(username: string | any): Promise<number> {
-      console.log("username: ", username);
+    static async getLastPosted(username: string | any): Promise<Date> {
       const user = await this.findOneByUsername(username);
-      console.log("user: ", user);
-      return user.streak;
+      return user.lastPosted;
     }
 
   /**
