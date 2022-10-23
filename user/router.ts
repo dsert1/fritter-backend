@@ -41,12 +41,28 @@ router.post(
   }
 );
 
+/**
+ * Add a follower to the user.
+ */
 router.put(
   '/addFollower',
   async (req: Request, res: Response) => {
     await UserCollection.addOneFollower(req.body.user1, req.body.user2);
     const user1Object = await UserCollection.findOneByUsername(req.body.user1);
     res.status(200).json(util.constructUserResponse(user1Object));
+  },
+);
+
+
+/**
+ * Get the streaks of the user
+ */
+router.get(
+  '/getStreak',
+  async (req: Request, res: Response) => {
+    const user = req.query.user;
+    const streak = await UserCollection.getStreak(user);
+    res.status(200).json(streak);
   },
 );
 

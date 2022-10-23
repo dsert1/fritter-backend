@@ -40,6 +40,7 @@ const formsAndHandlers = {
   'edit-freet': editFreet,
   'delete-freet': deleteFreet,
   'follow-user': addFollower,
+  'get-streak': fetchStreak
 };
 
 // Attach handlers to forms

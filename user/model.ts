@@ -37,7 +37,7 @@ const UserSchema = new Schema({
     required: true
   },
   streak: {
-    type: Number, 
+    type: 0, 
     required: false
   }, 
   followers: {

@@ -27,6 +27,12 @@ function addFollower(fields) {
     .catch(showResponse);
 }
 
+function fetchStreak(fields) {
+  fetch(`/api/users/getStreak?user=${fields.user}`) // GET
+    .then(showResponse)
+    .catch(showResponse);
+}
+
 function deleteUser(fields) {
   fetch('/api/users', {method: 'DELETE'})
     .then(showResponse)
