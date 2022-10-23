@@ -43,6 +43,12 @@ router.post(
 
 /**
  * Add a follower to the user.
+ * @name GET /api/users/addFollower
+ *
+ * @param {string} user1 - user one's username
+ * @param {string} user2 - user two's username
+ * @return {UserResponse} - An object with user's details
+ * @throws {400} - If error
  */
 router.put(
   '/addFollower',
@@ -55,7 +61,13 @@ router.put(
 
 
 /**
- * Get the streaks of the user
+ * Get the last posted date of the user
+ * 
+ * @name GET /api/users/getLastPosted
+ *
+ * @param {string} user - the user's username
+ * @return {UserResponse} - An object with user's details
+ * @throws {400} - If error
  */
 router.get(
   '/getLastPosted',
