@@ -12,6 +12,9 @@ export type User = {
   username: string;
   password: string;
   dateJoined: Date;
+  streak: number;
+  followers: string[];
+  following: string[];
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
@@ -32,6 +35,18 @@ const UserSchema = new Schema({
   dateJoined: {
     type: Date,
     required: true
+  },
+  streak: {
+    type: Number, 
+    required: false
+  }, 
+  followers: {
+    type: [],
+    required: false
+  },
+  following: {
+    type: [],
+    required: false
   }
 });
 
