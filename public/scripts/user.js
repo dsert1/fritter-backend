@@ -33,6 +33,12 @@ function getLastPosted(fields) {
     .catch(showResponse);
 }
 
+function getChannelModerator(fields) {
+  fetch(`/api/channels/getChannelModerator?channel=${fields.channel}`) // GET
+    .then(showResponse)
+    .catch(showResponse);
+}
+
 function deleteUser(fields) {
   fetch('/api/users', {method: 'DELETE'})
     .then(showResponse)
